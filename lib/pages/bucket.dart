@@ -15,9 +15,9 @@ class _BucketWidgetState extends State<BucketWidget> {
       appBar: AppBar(),
       body: Consumer<ProductBloc>(
         builder: (context, bloc, __) => ListView.builder(
-          itemCount: bloc.allProducts.length,
+          itemCount: bloc.shoppingCart.length,
             itemBuilder: (context, index) =>
-                _buildItem(bloc.allProducts[index])),
+                _buildItem(bloc.shoppingCart.toList()[index])),
       ),
     );
   }
@@ -29,7 +29,10 @@ class _BucketWidgetState extends State<BucketWidget> {
     ),
     IconButton(icon: Icon(Icons.remove),onPressed: (){
       print('remove product');
-      Provider.of<ProductBloc>(context,listen: false).removeProduct(product);
+      Provider.of<ProductBloc>(context).removeProduct(product);
+      setState(() {
+
+      });
     },)
   ]);
 }
