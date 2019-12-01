@@ -3,7 +3,7 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 import 'package:shopping_list/model/product.dart';
-import 'package:shopping_list/viewModel/product_repo.dart';
+import 'package:shopping_list/data/product_repo.dart';
 
 class ProductBloc extends ChangeNotifier{
   ProductRepo repo;
@@ -12,8 +12,9 @@ class ProductBloc extends ChangeNotifier{
     initialize();
   }
 
-  void initialize(){
-    this._allProducts.addAll(repo.getProducts()) ;
+  void initialize() async{
+    this._allProducts.addAll( await repo.getProducts()) ;
+    notifyListeners();
   }
 
   final Set<Product> _shoppingCart = HashSet();
