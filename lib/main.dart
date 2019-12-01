@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_list/data/product_bloc.dart';
-import 'package:shopping_list/data/product_repo.dart';
+import 'package:shopping_list/viewModel/product_bloc.dart';
+import 'package:shopping_list/viewModel/product_repo.dart';
 import 'package:shopping_list/pages/product_list.dart';
 
 void main() => runApp(MyApp());

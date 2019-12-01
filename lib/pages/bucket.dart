@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_list/data/product.dart';
-import 'package:shopping_list/data/product_bloc.dart';
+import 'package:shopping_list/model/product.dart';
+import 'package:shopping_list/viewModel/product_bloc.dart';
 
 class BucketWidget extends StatefulWidget {
   @override
@@ -14,15 +14,16 @@ class _BucketWidgetState extends State<BucketWidget> {
     return Scaffold(
       appBar: AppBar(),
       body: Consumer<ProductBloc>(
-        builder: (context, bloc, __) => ListView.builder(
+        child: Text('BARDZO SKOMPLIKOWANY'),
+        builder: (context, bloc, child) => ListView.builder(
           itemCount: bloc.shoppingCart.length,
             itemBuilder: (context, index) =>
-                _buildItem(bloc.shoppingCart.toList()[index])),
+                _buildItem(bloc.shoppingCart.toList()[index],child)),
       ),
     );
   }
 
-  Widget _buildItem(Product product) => Row(children: <Widget>[
+  Widget _buildItem(Product product, Widget child) => Row(children: <Widget>[
     Padding(
       padding: const EdgeInsets.all(20.0),
       child: Text(product.name),
@@ -33,6 +34,6 @@ class _BucketWidgetState extends State<BucketWidget> {
       setState(() {
 
       });
-    },)
+    },),child
   ]);
 }
